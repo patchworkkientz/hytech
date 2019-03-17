@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="mobile-gallery">
+    {{range $i, $v := .Images}}
+        <!--<div class="mobile-cell">-->
+        <img src="/assets/imgs/{{$v}}" id="slide-{{$i}}" class="mobile-pictures" alt="{{$v}}"/>
+        <!--</div>-->
+    {{end}}
+</div>
+
+
+<div id="slide-wrap">
+
+    <div id="pic-links">
+        {{range $i, $v := .Images}}
+            <a href="#slide-{{$i}}">{{$i}}</a>
+        {{end}}
+    </div>
+
+
+    <div id="mobile-gallery">
+        {{range $i, $v := .Images}}
+            <!--<div class="mobile-cell">-->
+            <div style="background-image: url('/assets/imgs/{{$v}}');" id="slide-{{$i}}" class="mobile-pictures"></div>
+            <!--</div>-->
+        {{end}}
+    </div>
+
+    <div>
+        <a href=""><p><</p></a>
+        <a href=""><p></p></a>
+    </div>
+</div>
+</body>
+</html>

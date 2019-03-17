@@ -1,0 +1,44 @@
+{{define "header"}}
+    <input type="checkbox" id="parent" {{if .Ask}}checked{{end}}>
+<header>
+    <nav>
+        <input type="checkbox" id="mobile-menu">
+        <label for="mobile-menu"><i class="fas fa-bars"></i></label>
+        <a href="/"><img src="/assets/v2_logo.png" alt="" id="logo"></a>
+        <div id="phone-call-cont">
+            <a href="tel:+1-559-7797367"><span class="phone"><i class="fas fa-phone fa-rotate-90"></i></span><span>  559-779-7367</span></a>
+        </div>
+        <ul id="menu">
+            <li {{if eq .Page "/services"}}class="tab-selected"{{end}}>
+                <a href="/services"><span class="menu-items-icon"><i class="fas fa-solar-panel"></i></span><span>Services</span></a>
+                <ol class="drop-menu">
+                    <li><a href="">Solar Panel Rooftops</a></li>
+                    <li><a href="">Ground Mounted Solar Panels</a></li>
+                    <li><a href="">Battery Back Up Systems</a></li>
+                </ol>
+            </li>
+            <li {{if eq .Page "/incentives/financing"}}class="tab-selected"{{end}}>
+                <a href="/incentives/financing"><span class="menu-items-icon"><i class="fas fa-file-invoice-dollar"></i></span><span>Incentives & Financing</span></a></li>
+            <li {{if eq .Page "/gallery"}}class="tab-selected"{{end}}>
+                <a href="/gallery"><span class="menu-items-icon"><i class="fas fa-home"></i></span><span>Client Gallery</span></a>
+                <ol class="drop-menu">
+                    <li><a href="">Residential Rooftop Solar</a></li>
+                    <li><a href="">Business Rooftop Solar</a></li>
+                    <li><a href="">Residential Ground Mounted Solar</a></li>
+                    <li><a href="">Business Backup Battery</a></li>
+                </ol>
+            </li>
+            <li {{if eq .Page "/renewable/energy"}}class="tab-selected"{{end}}>
+                <a href="/renewable/energy"><span class="menu-items-icon"><i class="fas fa-leaf"></i></span><span>Renewable Energy</span></a>
+            </li>
+            <li {{if eq .Page "/team"}}class="tab-selected"{{end}}>
+                <a href="/team"><span class="menu-items-icon"><i class="fas fa-users"></i></span><span>Team</span></a>
+            </li>
+            <li {{if eq .Page "/#mission"}}class="tab-selected"{{end}}>
+                <a href="/#mission"><span class="menu-items-icon"><i class="fas fa-bullseye"></i></span><span>Our Mission</span></a>
+            </li>
+        </ul>
+    </nav>
+</header>
+    {{/*<a href="/estimates#open_form" id="open_form"><div id="corner-link"></div></a>*/}}
+{{end}}

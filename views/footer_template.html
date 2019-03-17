@@ -1,0 +1,67 @@
+{{define "footer"}}
+    <a href="#" id="backtotop" role="button"><span><i class="fas fa-angle-up"></i></span></a>
+<footer>
+    <ul id="footer-links">
+        <li><p><a href="/tos">Terms of Use</a> | </p></li>
+        <li><p><a href="/privacy">Privacy Policy</a> | </p></li>
+        <li><p><a href="/licenses">License</a> | </p></li>
+        <li><p><a href="/sitemap">Sitemap</a></p></li>
+    </ul>
+    <p id="copyright">© Copyright 2019 HyTech Energy, Inc. All rights reserved.</p>
+</footer>
+<script src="/assets/jquery.min.js"></script>
+{{/*<script src="/assets/app.js"></script>*/}}
+<!-- Development version: -->
+<script>document.write('<script src="/assets/app.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
+    {{if or (eq .Page "/") (eq .Page "/estimates")}}
+        <script>
+            document.getElementById("start").addEventListener("change", function() {
+                if(this.checked ) {
+                    document.getElementById("parent").checked = true;
+                }
+            });
+        </script>
+{{end}}
+<script>
+    //document.getElementById("backtotop").style.display = "none";
+    function f() {
+        var hash = window.location.hash;
+        if (hash === "#open_form") {
+            document.getElementById("start").checked = true;
+        }
+        var num_circles = document.getElementById("pic-links").querySelectorAll("a");
+        for (var i = 0; i < num_circles.length; i++) {
+            num_circles[i].style.border = "2px solid transparent";
+        }
+        document.getElementById("pic-links").querySelector("a[href='" + hash + "']").style.border = "2px solid rgb(30,124,253)";
+        var num = parseInt(hash.match(/\d+/), 10);
+        var left_num = num - 1;
+        var right_num = num + 1;
+        var last_num = document.getElementsByClassName("mobile-pictures").length-1;
+
+        document.getElementById("slide-fraction").innerText = (num + 1) + " of " + (document.getElementsByClassName("mobile-pictures").length);
+
+        var slide_num_el = document.getElementById("slide-num");
+        slide_num_el.value = num + 1;
+        slide_num_el.dispatchEvent(new Event('change'));
+
+        if (num === last_num) {
+            document.getElementById("pic-right").href = "#slide-0";
+            document.getElementById("pic-left").href = "#slide-" + left_num;
+        } else if (num === 0) {
+            document.getElementById("pic-right").href = "#slide-" + right_num;
+            document.getElementById("pic-left").href = "#slide-" + last_num;
+        } else {
+            document.getElementById("pic-right").href = "#slide-" + right_num;
+            document.getElementById("pic-left").href = "#slide-" + left_num;
+        }
+        // var x = window.pageXOffset;
+        // var y = window.pageYOffset;
+        // window.scrollTo(0, 0);
+    }
+    f();
+    window.addEventListener("hashchange", f);
+</script>
+</body>
+</html>
+{{end}}

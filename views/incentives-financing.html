@@ -1,0 +1,32 @@
+{{template "head" .}}
+<style>
+    body {
+        height: 1000px;
+    }
+</style>
+{{template "header" .}}
+<main class="layout-main">
+    <div class="page-banner finance-banner">
+        {{/*<h1>Pay off your renewable energy installation with the same money your paying for utilities</h1>*/}}
+        <a href="/estimates#open_form" id="open_form"></a>
+    </div>
+    <div class="content-main finance-content">
+        <p>We will help you by getting amazing financing for your solar energy system.</p>
+        <ul>
+            <li>
+                <p>We arrange for you to get Incentive Tax Credits and Rebates from the Goverment <a href="https://www.energysage.com/solar/cost-benefit/solar-incentives-and-rebates/">learn more?</a></p>
+                <div id="government_icon"></div>
+            </li>
+            <li>
+                <p>We offer Financing through leading renewable energy financiers</p>
+                <div id="financiers">
+                    <a href="https://www.myeecu.org/home/products/loans-credit-cards/personal" class="financier"></a>
+                    <a href="https://www.sungagefinancial.com" class="financier"></a>
+                    <a href="https://ygrene.com" class="financier"></a>
+                    <a href="https://www.pacefunding.com" class="financier"></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</main>
+{{template "footer" .}}

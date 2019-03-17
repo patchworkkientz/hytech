@@ -1,0 +1,34 @@
+{{template "head" .}}
+{{template "header" .}}
+<style>
+    footer {
+        top: 501px;
+    }
+</style>
+<ul id="sitemap">
+    <li><a href="/estimates">Estimate</a></li>
+    <li><a href="">Services</a></li>
+        <ul>
+            <li><a href="">Solar Panel Rooftops</a></li>
+            <li><a href="">Ground Mounted Solar Panels</a></li>
+            <li><a href="">Battery Back Up Systems</a></li>
+        </ul>
+    <li><a href="">Incentives & Financing</a></li>
+    <li><a href="">Client Installments</a></li>
+        <ul>
+            <li><a href="">Residential Rooftop Solar</a></li>
+            <li><a href="">Business Rooftop Solar</a></li>
+            <li><a href="">Residential Ground Mounted Solar</a></li>
+            <li><a href="">Business Backup Battery</a></li>
+        </ul>
+    <li><a href="">Renewable Energy</a></li>
+    <li><a href="">Our Mission</a></li>
+</ul>
+{{template "footer" .}}
+<script>
+    // var footer_top = document.getElementById("sitemap").offsetHeight;
+    // var num_top = Number(footer_top) + 133 + 80;
+    // alert(num_top);
+    // document.getElementsByTagName("footer")[0].style.top = num_top.toString() + "px";
+    // alert(num_top.toString() + "px");
+</script>

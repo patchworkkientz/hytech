@@ -1,0 +1,87 @@
+{{template "head" .}}
+{{template "header" .}}
+<style>
+    body {
+        height: 1000px;
+    }
+    nav {
+        /*position: absolute;*/
+    }
+{{range $i, $v := .Images}}
+
+    @media (max-width: 600px) {
+        #slide-{{$i}}:target ~ .mobile-pictures-link div {
+            background-image: url("/assets/imgs/{{$v.Name}}");
+            width: 80vw;
+        {{if gt $v.Width $v.Height}}
+            height: {{$v.Height}}px;
+        {{else}}
+            height: {{$v.Height}}px;
+        {{end}}
+        }
+    }
+    @media (min-width: 600px) {
+        #slide-{{$i}}:target ~ .mobile-pictures-link div {
+            background-image: url("/assets/imgs/{{$v.Name}}");
+
+        {{if gt $v.Width $v.Height}}
+            height: {{$v.Height}}px;
+            width: {{$v.Width}}px;
+        {{else}}
+            height: {{$v.Height}}px;
+            width: {{$v.Width}}px;
+        {{end}}
+        }
+    }
+    #slide-{{$i}}:target ~ .mobile-pictures-link {
+        display: block;
+    }
+    #slide-{{$i}}:not(:target) ~ .mobile-pictures-link {
+        display: none;
+    }
+    #slide-{{$i}}:target {
+        display: block;
+        position: fixed;
+        top:0;
+    }
+{{end}}
+</style>
+<main class="layout-main">
+    <div id="slideshow">
+        <div id="slideshow-btn">
+            <input id="slide-num" type="text" hidden>
+            <label class="show-slider-svg svg-selected"></label>
+            <label class="hide-slider-svg"></label>
+            <div class="clearfix"></div>
+        </div>
+        <div id="thumbnail-slider">
+            <label class="disable-left-arrow" for="slide-left"></label>
+            <div id="pic-links">
+                {{range $i, $v := .Images}}
+                    <a class="thumbnail" href="#slide-{{$i}}" style="background-image: url('/assets/imgs/{{$v.Name}}')"></a>
+                {{end}}
+            </div>
+            <label for="slide-right" class="right-side-hover"></label>
+        </div>
+
+        <div id="mobile-gallery">
+            <a id="pic-left" href="#slide-8"><div class="left-arrow"></div><div>previous</div></a>
+            <div id="slide-fraction"></div>
+            {{$last := minus (len .Images) 1}}
+            {{range $i, $v := .Images}}
+            <span id="slide-{{$i}}" class="prevent-scroll-to-target">&nbsp;</span>
+            {{if eq $i $last}}
+            <a href="#slide-0" class="mobile-pictures-link">
+                {{else}}
+                <a href="#slide-{{add $i 1}}" class="mobile-pictures-link">
+                    {{end}}
+                    <div class="mobile-pictures"></div>
+                </a>
+                {{end}}
+                <a id="pic-right" href="#slide-1"><div>next</div><div class="right-arrow"></div></a>
+        </div>
+        <input id="slide-num" type="text" hidden>
+    </div>
+
+</main>
+{{template "footer" .}}

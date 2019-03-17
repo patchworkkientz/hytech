@@ -1,0 +1,86 @@
+{{define "estimate-form"}}
+    <style>
+        @keyframes progress {
+            from {width: {{.Barlast}}}
+            to {width: {{.Progress}}}
+        }
+        .progress_bar, .progress_bar_mobile {
+            width: {{.Progress}};
+            animation-name: progress;
+            animation-duration: 1s;
+        }
+    </style>
+<div id="service-form-parent">
+    <form action="/estimates" method="post" id="service-form">
+        <div id="close-form"><label class="close-form-x" for="start"></label></div>
+        {{$x := false}}
+        {{if or $x .Ask}}
+            <input type="hidden" name="name" value="{{.Pclient.Name}}">
+            <input type="hidden" name="email" value="{{.Pclient.Email}}">
+            <input type="hidden" name="tel" value="{{.Pclient.Tel}}">
+            {{if ne .Ask "interest"}}
+                <input type="hidden" value="{{.Pclient.Interest}}" name="interest">
+            {{end}}
+        {{end}}
+        {{if eq .Ask "message"}}
+            <div class="wait"></div>
+            <div class="p-wrap">
+                <p>Anything else before we meet you?</p>
+            </div>
+            <textarea id="extra-email" name="message" placeholder="Feel free to say or ask anything..."></textarea>
+            <div class="button-box">
+                <div class="wrap">
+                    <input type="submit" value="No Thanks" name="submit" class="btn-copy">
+                </div>
+                <div class="wrap">
+                    <input type="submit" value="Yes, Send!" name="submit" class="btn-copy">
+                </div>
+            </div>
+        {{else if eq .Ask "interest"}}
+            <div class="p-wrap">
+                <p>What are your interests in reaching out to us?</p>
+            </div>
+            <div class="wrap">
+                <div class="interest-table">
+                    <div><input type="checkbox" name="interest" value="Rooftop Solar">Rooftop Solar</div>
+                    <div><input type="checkbox" name="interest" value="Ground Mount Solar">Ground Mount Solar</div>
+                    <div><input type="checkbox" name="interest" value="Battery Backup Systems">Battery Backup Systems</div>
+                    <div><input type="checkbox" name="interest" value="Off Grid">Off Grid</div>
+                    <div><input type="checkbox" name="interest" value="Employment">Employment</div>
+                </div>
+            </div>
+            <div class="wrap">
+                <input type="submit" value="Send My Interests" name="submit" class="btn-copy">
+            </div>
+        {{else if or (eq .Ask "finnish") (eq .Ask "nothanks")}}
+            <div class="thanks">
+                <h2>Thank You {{.Pclient.Name}}!</h2>
+                <h3>We look forward to contacting you.</h3>
+            </div>
+        {{else}}
+            {{/*<div class="p-wrap">*/}}
+            {{/*<p>What's your name, email and phone number?</p>*/}}
+            {{/*</div>*/}}
+            {{/*<label>name<br>*/}}
+            <div class="input-label">
+                <input type="text" name="name" value="{{.Pclient.Name}}" placeholder="Full name*" class="form-inputs" required>
+                <label for="name">Full name</label>
+            </div>
+            <div class="input-label">
+                <input type="email" name="email" value="{{.Pclient.Email}}" placeholder="Email*" class="form-inputs" required>
+                <label for="email">Email*</label>
+            </div>
+            <div class="input-label">
+                <input type="tel" name="tel" value="{{.Pclient.Tel}}" placeholder="Phone number*" class="form-inputs" required>
+                <label for="tel">Phone number*</label>
+            </div>
+            <div class="wrap">
+                <input id="first-btn" type="submit" value="Send It" class="btn-copy">
+            </div>
+        {{end}}
+        <div class="wrapper">
+            <div class="progress_bar"></div>
+        </div>
+    </form>
+</div>
+{{end}}

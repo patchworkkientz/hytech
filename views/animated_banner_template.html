@@ -1,0 +1,46 @@
+{{define "animated_banner_template"}}
+    <style>
+        /*@media (min-width: 600px){*/
+        {{range $i, $v := .Rays}}
+        .sun-wrapper:nth-child({{add $i 1}}) {
+            transform-origin: center;
+            transform: rotate({{$v}}deg);
+        }
+        {{end}}
+        /*}*/
+        {{/*@media (max-width: 600px){*/}}
+        {{/*{{range $i, $v := .LessRays}}*/}}
+        {{/*.sun-wrapper:nth-child({{add $i 1}}) {*/}}
+        {{/*transform-origin: center;*/}}
+        {{/*transform: rotate({{$v}}deg);*/}}
+        {{/*}*/}}
+        {{/*{{end}}*/}}
+        {{/*}*/}}
+    </style>
+    <div id="banner">
+        {{/*<input id="start" type="checkbox" {{if .Ask}}checked{{end}}>*/}}
+
+        {{range $i, $v := .Rays}}
+            <div class="sun-wrapper set-one">
+                <div class="our-mother-earth"></div>
+            </div>
+        {{end}}
+        {{/*{{template "estimate-form" .}}*/}}
+        {{/*<span id="intro">*/}}
+        {{/*<div id="open-line">imagine an energy bill paid for by the sun</div>*/}}
+        {{/*<div id="power-line">ENERGY FROM A HIGHER POWER</div>*/}}
+        {{/*</span>*/}}
+    </div>
+    <div id="duplicate-banner-parent">
+        <div id="duplicate-banner">
+            {{range $i, $v := .Rays}}
+                <div class="sun-wrapper set-two">
+                    <div class="our-mother-earth"></div>
+                </div>
+            {{end}}
+            <div class="sun-wrapper">
+                <label for="start" id="co-logo"></label>
+            </div>
+        </div>
+    </div>
+{{end}}
