@@ -1,19 +1,55 @@
 {{template "head" .}}
 {{template "header" .}}
 <style>
-    body {
-        height: 1300px;
-    }
+
 </style>
-<div id="gallery">
-    <div class="client"></div>
-    <div class="client"></div>
-    <div class="client"></div>
-    <div class="client"></div>
-    <div class="client"></div>
-    <div class="client"></div>
-    <div class="client"></div>
-    <div class="client"></div>
-    <div class="client"></div>
-</div>
+<main id="main-gallery">
+    <div class="gallery">
+        {{range $i, $v := .Images}}
+            <a id="slide-{{$i}}" href="/installments#slide-{{$i}}" style="background-image: url('/assets/imgs/{{$v.Name}}');"
+               class="client {{if le $i 7}}show-client{{end}}"></a>
+        {{end}}
+    </div>
+</main>
 {{template "footer" .}}
+<script>
+    var max = 18;
+    var randPics = [0, 1, 2, 3, 4, 5, 6, 7];
+    var prevPics = [];
+    var gal = document.getElementsByClassName("gallery");
+
+    function changePictures() {
+        var newGal = gal[0].cloneNode(false);
+        prevPics = randPics.slice(0);
+        var  i = 0;
+        while (i <= 7) {
+            var rand = Math.floor(Math.random() * Math.floor(max));
+            if (randPics.indexOf(rand) === -1 && prevPics.indexOf(rand) === -1) {
+                randPics[i] = rand;
+                i++;
+            }
+        }
+
+        console.log("rn " + randPics);
+
+        randPics.forEach(function (value, index) {
+            var newPic = gal[0].getElementsByClassName("client")[value].cloneNode(false);
+            if (gal[0].getElementsByClassName("client")[value].cloneNode(false) === undefined) {
+                console.log(gal[0].getElementsByClassName("client")[value]);
+            }
+            newPic.classList.add("show-client");
+            newGal.appendChild(newPic);
+        });
+        console.log(gal[0].getElementsByClassName("client"));
+        //console.log(newGal);
+        newGal.classList.add("show-gallery");
+        document.getElementsByTagName("main")[0].appendChild(newGal);
+    }
+    self.setInterval(function (){ changePictures() }, 4000);
+    // changePictures();
+    // changePictures();
+    // changePictures();
+    // changePictures();
+    // changePictures();
+    // changePictures();
+</script>

@@ -283,9 +283,7 @@ $(document).ready(function($) {
                 $(this).addClass("card-appeared");
             }
         });
-
     });
-
 });
 
 var createdStyleTag = document.createElement("style");
@@ -310,6 +308,9 @@ var keyFrames = ".our-mother-earth::after {\n" +
 
 createdStyleTag.innerText = keyFrames.replace(/A_DYNAMIC_VALUE/g, content_width);
 document.body.appendChild(createdStyleTag);
+
+
+
 
 
 
