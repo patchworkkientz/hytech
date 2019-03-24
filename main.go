@@ -111,38 +111,34 @@ func ServePublicIndexPage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	msg_flag := ""
-	barlast := "0%"
-	progress := "25%"
-	//pclient := Potential_Client{}
+	barlast := r.FormValue("progress_width");
+	if barlast == "" {
+		barlast = "0"
+	}
+	progress := "10"
 
 	if r.Method == "POST" {
 		if r.FormValue("submit") == "Yes, Send!" {
 			Mailer(pclient)
 			msg_flag = "finnish"
-			barlast = "75%"
-			progress = "100%"
+			progress = "100"
 		} else if r.FormValue("submit") == "No Thanks" {
 			Mailer(pclient)
 			msg_flag = "nothanks"
-			barlast = "75%"
-			progress = "100%"
+			progress = "100"
 		} else if r.FormValue("submit") == "Send My Interests" {
 			//pclient = Mailer(w, r)
 			msg_flag = "message"
-			barlast = "50%"
-			progress = "75%"
+			progress = "70"
 		} else {
 			//pclient = Mailer(w, r)
 			msg_flag = "interest"
-			barlast = "25%"
-			progress = "50%"
+			progress = "50"
 		}
 	}
 
 	fmt.Println(r.FormValue("submit"))
 	//l, _ := FileList("imgs")
-
-	//msg_flag = "message"
 
 	rays := make([]int, 20)
 	lessRays := make([]int, 10)

@@ -1,4 +1,20 @@
+
 $(document).ready(function($) {
+
+    $("#backtotop").hide();
+    var isVisible = false;
+    $(window).scroll(function(){
+        var pageBottom = $(window).scrollTop() + $(window).height();
+        var shouldBeVisible = $(window).scrollTop()>200;
+        if (shouldBeVisible && !isVisible || pageBottom === $(document).height()) {
+            isVisible = true;
+            $("#backtotop").show();
+            $("#scroll-down").hide();
+        } else if (isVisible && !shouldBeVisible && pageBottom !== $(document).height()) {
+            isVisible = false;
+            $("#backtotop").hide();
+        }
+    });
 
     var container = $("#viewer");
 
@@ -25,16 +41,22 @@ $(document).ready(function($) {
         }
     });
 
+    var w = 10;
+
+    $("input[name='name'], input[name='email'], input[name='tel']").change(function () {
+        var prog = $(".progress_bar");
+
+        if ($(this).is(":valid")) {
+            w += 10;
+        } else if (w >= 10) {
+            w -= 10;
+        }
+        $("input[name='progress_width']").val(w);
+        prog.animate({width: w + "%"}, "slow");
+    });
+
     $("#service-form").submit(function(event) {
         $(".wait").addClass("spinner");
-        // $("#service-form").hide();
-        // $.post("/estimates", function() {
-        //     if (window.location.pathname != "/") {
-        //         $("#service-form").hide();
-        //         // $(".wait").removeClass("spinner");
-        //         // $("#service-form").show();
-        //     }
-        // });
     });
 
     if ($(".thanks").length) {
@@ -57,29 +79,12 @@ $(document).ready(function($) {
             flips[i] = false;
         }
     });
-    $("#backtotop").hide();
-
-    var isVisible = false;
-    $(window).scroll(function(){
-        var pageBottom = $(window).scrollTop() + $(window).height();
-        var shouldBeVisible = $(window).scrollTop()>200;
-        if (shouldBeVisible && !isVisible || pageBottom === $(document).height()) {
-            isVisible = true;
-            $("#backtotop").show();
-        } else if (isVisible && !shouldBeVisible && pageBottom !== $(document).height()) {
-            isVisible = false;
-            $("#backtotop").hide();
-        }
-    });
 
     $("input[type='submit']").click(function() {
 
 
         $("#service-form-parent").effect("shake");
     });
-
-
-    //alert($(".our-mother-earth").after().width());
 
     //thumbnail slider ------------------------------>
     $(".show-slider-svg").on(clickEvent, function () {

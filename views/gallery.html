@@ -3,14 +3,14 @@
 <style>
 
 </style>
-<main id="main-gallery">
-    <div class="gallery">
-        {{range $i, $v := .Images}}
-            <a id="slide-{{$i}}" href="/installments#slide-{{$i}}" style="background-image: url('/assets/imgs/{{$v.Name}}');"
-               class="client {{if le $i 7}}show-client{{end}}"></a>
-        {{end}}
-    </div>
-</main>
+    <main id="main-gallery">
+        <div class="gallery">
+            {{range $i, $v := .Images}}
+                <a id="slide-{{$i}}" href="/installments#slide-{{$i}}" style="background-image: url('/assets/imgs/{{$v.Name}}');"
+                   class="client {{if le $i 7}}show-client{{end}}"></a>
+            {{end}}
+        </div>
+    </main>
 {{template "footer" .}}
 <script>
     var max = 18;
@@ -46,10 +46,17 @@
         document.getElementsByTagName("main")[0].appendChild(newGal);
     }
     self.setInterval(function (){ changePictures() }, 4000);
-    // changePictures();
-    // changePictures();
-    // changePictures();
-    // changePictures();
-    // changePictures();
-    // changePictures();
+
+    function addHeightToMainGallery() {
+        var h = document.getElementsByClassName("gallery")[0].offsetHeight;
+        var x = Number(h) + 300;
+        document.getElementById("ecto").style.height = x.toString() + "px";
+    }
+    addHeightToMainGallery();
+
+    window.onresize = (function () {
+        var h = document.getElementsByClassName("gallery")[0].offsetHeight;
+        var x = Number(h) + 300;
+        document.getElementById("ecto").style.height = x.toString() + "px";
+    });
 </script>

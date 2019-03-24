@@ -1,5 +1,5 @@
 {{define "footer"}}
-    <a href="#" id="backtotop" role="button"><span><i class="fas fa-angle-up"></i></span></a>
+<a href="#" id="backtotop" role="button"><span><i class="fas fa-angle-up"></i></span></a>
 <footer>
     <ul id="footer-links">
         <li><p><a href="/tos">Terms of Use</a> | </p></li>
@@ -26,6 +26,11 @@
     //document.getElementById("backtotop").style.display = "none";
     function f() {
         var hash = window.location.hash;
+        var a = document.getElementById("backtotop");
+        a.onclick = function() {
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+            return false;
+        };
         if (hash === "#open_form") {
             document.getElementById("start").checked = true;
         }

@@ -1,18 +1,21 @@
 {{define "estimate-form"}}
     <style>
         @keyframes progress {
-            from {width: {{.Barlast}}}
-            to {width: {{.Progress}}}
+            from {width: {{.Barlast}}%;}
+            to {width: {{.Progress}}%;}
         }
-        .progress_bar, .progress_bar_mobile {
-            width: {{.Progress}};
-            animation-name: progress;
-            animation-duration: 1s;
+        .progress_bar {
+            width: {{.Progress}}%;
+            animation: 1s linear progress;
         }
     </style>
+<div class="wrapper_mobile">
+    <div class="progress_bar"></div>
+</div>
 <div id="service-form-parent">
     <form action="/estimates" method="post" id="service-form">
-        <div id="close-form"><label class="close-form-x" for="start"></label></div>
+        <input type="hidden" name="progress_width" value="{{.Progress}}">
+        <label id="close-form" for="start"><div class="close-form-x"></div></label>
         {{$x := false}}
         {{if or $x .Ask}}
             <input type="hidden" name="name" value="{{.Pclient.Name}}">
@@ -68,11 +71,11 @@
             </div>
             <div class="input-label">
                 <input type="email" name="email" value="{{.Pclient.Email}}" placeholder="Email*" class="form-inputs" required>
-                <label for="email">Email*</label>
+                <label for="email">Email</label>
             </div>
             <div class="input-label">
                 <input type="tel" name="tel" value="{{.Pclient.Tel}}" placeholder="Phone number*" class="form-inputs" required>
-                <label for="tel">Phone number*</label>
+                <label for="tel">Phone number</label>
             </div>
             <div class="wrap">
                 <input id="first-btn" type="submit" value="Send It" class="btn-copy">

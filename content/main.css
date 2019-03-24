@@ -5,9 +5,8 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    /*width: 100%;*/
-    /*position: relative;*/
     height: 100%;
+    display: block;
 }
 body {
     background-color: #f8fafc;
@@ -16,27 +15,27 @@ body {
 #ecto {
     min-height: 100vh;
     position: relative;
-    padding-bottom: 30vh;
+    padding-bottom: 10vh;
     /* fix white gap on right side of banner on ios Safari*/
     overflow-x: hidden;
 }
 header {
     display: block;
     z-index: 4;
-    position: relative;
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*right: 0;*/
+    /*position: relative;*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     max-height: 10vh;
+    bottom: 5vh;
 }
 footer {
-    height: 20vh;
+    display: block;
     background-color: white;
     position: absolute;
     bottom: 0; left: 0; right: 0;
     border-bottom: 5px solid blue;
-    display: block;
     box-shadow: 0 -5px 5px -5px rgba(182, 182, 182, 0.75);
     color: #323c3d;
     clear: both;
@@ -52,13 +51,18 @@ a[href="/estimates#open_form"]#open_form:target {
                          /*|*/
                          /*^*/
 @media (max-width: 600px) {
+    #start:checked ~ .wrapper_mobile {
+        display: block;
+    }
     .wrapper_mobile {
         height: 30px;
         background-color: #ddd;
-        position: absolute;
-        bottom: 0;
-        left: 0; right: 0;
+        position: fixed;
+        top: 54px;
+        left: 0;
+        right: 0;
         display: none;
+        z-index: 1;
     }
     #graphic {
         background-image: url("v2_logo.png");
@@ -66,19 +70,6 @@ a[href="/estimates#open_form"]#open_form:target {
     }
     #service-form {
         margin: 2%;
-    }
-    #banner, .layout-main, .estimates-main {
-        /*top: 102px;*/
-        /*bottom: 0;*/
-    }
-    #parent:checked ~ #banner {
-        /*bottom: 30px;*/
-    }
-    #parent:checked ~ .estimates-main {
-        /*bottom: 30px;*/
-    }
-    #parent:checked ~ .wrapper_mobile {
-        display: block;
     }
     #logo > * {
         font-size: 12px;
@@ -277,10 +268,6 @@ a[href="/estimates#open_form"]#open_form:target {
     label[for="mobile-menu"] {
         display: none;
     }
-    .layout-main {
-        /*#banner, .estimates-main*/
-        /*bottom: 0;*/
-    }
     .image-wrapper {
         padding-top: 25vh;
     }
@@ -290,7 +277,6 @@ a[href="/estimates#open_form"]#open_form:target {
     #power-line {
         font-size: 85px;
     }
-
     /*#logo {*/
         /*background: url("v2_logo.png") no-repeat bottom;*/
         /*background-color: #bbbbbb;*/
@@ -344,10 +330,12 @@ a[href="/estimates#open_form"]#open_form:target {
     #phone-call-cont {
         float: right;
         display: inline-block;
-        /*background-color: plum;*/
         line-height: 50px;
+        transition: all .2s ease-in-out;
     }
-
+    #phone-call-cont:hover {
+        transform: scale(1.13);
+    }
     #phone-call-cont a {
         text-decoration: none;
         color: #464646;
@@ -443,15 +431,13 @@ a[href="/estimates#open_form"]#open_form:target {
 }
 /*end of desktop----------->*/
 /*buttons/links-------------------------->||||||*/
-
 #start, #parent {
     display: none;
 }
-
 .wrap {
     text-align: center;
 }
-public-index-start:not(.close-form-x), .btn-copy  {
+#public-index-start:not(.close-form-x), .btn-copy  {
     background-color: #297fd4 !important;
     border-radius: 13px !important;
     color: #fff !important;
@@ -467,7 +453,7 @@ public-index-start:not(.close-form-x), .btn-copy  {
     display: inline-block;
     transition: all 0.2s ease;
 }
-public-index-start:not(.close-form-x):hover {
+#public-index-start:not(.close-form-x):hover {
     transform: scale(1.05);
 }
 #public-index-start {
@@ -508,17 +494,17 @@ a[href="/estimate"]:hover {
     /*border: 1px solid magenta;*/
     margin-top: 1em;
 }
-
 .button-box .wrap {
     /*border: 1px solid blue;*/
     width: 45%;
 }
-
 .button-box .wrap .btn-copy {
     padding: 1em 1em;
     font-size: 16px;
 }
-
+.wrap #first-btn {
+    margin-top: 3%;
+}
 /*estimate form---------------------------->|||||*/
 
 #start:checked ~ #intro {
@@ -544,14 +530,12 @@ a[href="/estimate"]:hover {
     }
 }
 #service-form-parent {
-    /*display: inline-block;*/
+    top: 20vh;
     display: none;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     position: absolute;
     z-index: 4;
-    height: auto;
 }
 
 #service-form {
@@ -566,6 +550,7 @@ a[href="/estimate"]:hover {
     transition: all 1s;
 }
 #close-form {
+    cursor: pointer;
     position: absolute;
     right: 0;
     top: 0;
@@ -598,7 +583,7 @@ a[href="/estimate"]:hover {
 }
 .input-label label:after {
     color: red;
-    content: "*?";
+    content: "*";
 }
 input[required]:valid:not(:focus) ~ label {
     display: block;
@@ -614,7 +599,6 @@ input[required]:valid:not(:focus) ~ label {
 input[required]:valid:not(:focus) ~ label:after {
     color: #999;
 }
-
 input[required]:focus {
     border-bottom-color: #1879d7 !important;
 }
@@ -982,10 +966,12 @@ nav:after {
     z-index: 3;
 }
 .layout-main {
-    width: 100%;
     text-align: center;
     position: relative;
+    display: block;
     background: #f9f9f9;
+    padding-top: 10vh;
+    padding-bottom: 20vh;
 }
 #headline {
     text-align: center;
@@ -995,6 +981,7 @@ nav:after {
     margin-top: 2%;
 }
 #mission {
+    height: 300px;
     display: block;
     padding: 0 1% 0 1%;
     width: 70%;
@@ -1119,9 +1106,6 @@ nav:after {
 .services-banner {
     background-image: url("RenewableRewards_banner-1.jpg");
 }
-#open-form {
-
-}
 .services-content {
     display: flex;
     flex-flow: column;
@@ -1218,10 +1202,11 @@ nav:after {
     background-image: url("imgs/4.JPG");
 }
 #backtotop {
+    z-index: 3;
     position: absolute;
     right: 25px;
+    bottom: 20vh;
     display: inline-block;
-    z-index: 3;
     background: #2196f3;
     background-image: linear-gradient( to top, #2196f3, #2196f3 );
     color: #ffffff;
@@ -1240,7 +1225,11 @@ nav:after {
     border-color: #1c47bb;
     box-shadow: #343c3d;
 }
-
+/*@media (max-width: 600px) {*/
+    /*#backtotop {*/
+        /*display: none !important;*/
+    /*}*/
+/*}*/
 /*end of----services page------------------------------>*/
 
 /*finance page------------------------------>||||||*/
@@ -1966,12 +1955,10 @@ label[for="slide-right"] {
     background-color: #ddd;
     margin: 1em -1em -15px -1em;
 }
-.progress_bar, .progress_bar_mobile {
+.progress_bar {
     height: 100%;
-    width: 0;
     background: #00ff00;
 }
-
 .timed-css {
     background: red;
     transition: all 1s;
@@ -1980,9 +1967,9 @@ label[for="slide-right"] {
 #tos, #privacy, #licenses {
     position: relative;
     display: block;
-    top: 133px;
     width: 70%;
-    margin: 2em auto;
+    margin: 0 auto;
+    padding-top: 10vh;
     color: #666;
     font-size: 16px;
     font-weight: 200;
@@ -2007,7 +1994,8 @@ label[for="slide-right"] {
     }
 }
 #main-gallery {
-
+    padding: 15vh 0 0 0;
+    position: relative;
 }
 .gallery {
     position: absolute;
@@ -2015,7 +2003,7 @@ label[for="slide-right"] {
     transform: translateX(-50%);
     display: block;
     font-size: 0;
-    width: 80%;
+    width: 85%;
     text-align: center;
 }
 .client {
@@ -2050,7 +2038,37 @@ label[for="slide-right"] {
         opacity: 1;
     }
 }
-
+#scroll-down {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    border-bottom: 3px solid #464646;
+    border-right: 3px solid #464646;
+    transform: translate(-50%, -10%) rotate(45deg);
+    z-index: 99999;
+    animation: fade_move_down 4s ease-in-out infinite;
+}
+/*animated scroll arrow animation*/
+@keyframes fade_move_down {
+    0%   { transform:translate(-50%, -20px) rotate(45deg); opacity: 0;  }
+    50%  { opacity: 1;  }
+    100% { transform:translate(-50%, 20px) rotate(45deg); opacity: 0; }
+}
+#services-headline, #incentives-headline {
+    text-align: center;
+}
+#services-headline:target ~ #scroll-down {
+    display: none;
+}
+#incentives-headline:target ~ #scroll-down {
+    display: none;
+}
 
 
 
