@@ -26,10 +26,10 @@
     //document.getElementById("backtotop").style.display = "none";
     function f() {
         var hash = window.location.hash;
-        var a = document.getElementById("backtotop");
-        a.onclick = function() {
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
-            return false;
+        var hideMenu = document.getElementById("hide-menu");
+        hideMenu.onclick = function() {
+            document.getElementById("mobile-menu").checked = false;
+            return true;
         };
         if (hash === "#open_form") {
             document.getElementById("start").checked = true;

@@ -98,24 +98,9 @@ a[href="/estimates#open_form"]#open_form:target {
     #news {
         display: none;
     }
-    /*header {*/
-        /*display: block;*/
-        /*z-index: 4;*/
-        /*!*position: fixed;*!*/
-        /*!*left: 0; right: 0;*!*/
-        /*position: relative;*/
-        /*max-height: 10vh;*/
-        /*margin-bottom: 0;*/
-    /*}*/
-    #banner-cont {
-        position: relative;
-        display: block;
-        min-height: 90vh;
-    }
     nav {
         background-color: white;
         box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        /*background-color: #1feaf7;*/
         padding: 0 1.5%;
     }
     #logo {
@@ -125,7 +110,6 @@ a[href="/estimates#open_form"]#open_form:target {
         width: auto;
         height: auto;
         margin-right: 2%;
-        /*background-color: #bbbbbb;*/
     }
     /*mobile menu---------------------->||||||*/
     label[for="mobile-menu"] {
@@ -287,11 +271,6 @@ a[href="/estimates#open_form"]#open_form:target {
         /*width: auto;*/
         /*height: auto;*/
     /*}*/
-    #banner-cont {
-        position: relative;
-        display: block;
-        min-height: 90vh;
-    }
     nav {
         background-color: white;
         box-shadow: 0 4px 8px rgba(0,0,0,0.15);
@@ -358,9 +337,6 @@ a[href="/estimates#open_form"]#open_form:target {
             text-align: center;
         }
     }
-
-
-
     /*#menu li:hover:not(.tab-selected) {*/
         /*background-color: rgba(212, 212, 212, 0.75);*/
         /*color: #666;*/
@@ -664,15 +640,18 @@ input[required]:focus::-webkit-input-placeholder, #service-form textarea:focus::
 /*end 0f---estimates page---------------------------->|||||*/
 
 /*public index page------------------------------->|||||||*/
+#banner-cont {
+    position: relative;
+    display: block;
+    min-height: 90vh;
+    top: 8vh;
+}
 #banner, .estimates-main {
     display: inline-block;
     background-image: url("front.jpg");
     background-size: cover;
     background-position: bottom center;
     background-repeat: no-repeat;
-    /*position: relative;*/
-    /*height: 100%;*/
-    /*height: 550px;*/
     width: 100%;
     z-index: 1;
     overflow: hidden;
@@ -834,6 +813,8 @@ input[required]:focus::-webkit-input-placeholder, #service-form textarea:focus::
     position: relative;
     width: 200px;
     height: 200px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 #open_form:after {
     content: "";
@@ -883,9 +864,9 @@ input[required]:focus::-webkit-input-placeholder, #service-form textarea:focus::
     }
 }
 @media (max-width: 600px){
-    #banner-cont {
-        min-height: 75vh;
-    }
+    /*#banner-cont {*/
+        /*min-height: 75vh;*/
+    /*}*/
     #banner {
         -webkit-clip-path: inset(0 0 -50% 30%);
         clip-path: inset(0 0 -50% 30%);
@@ -951,7 +932,7 @@ nav:after {
     z-index: 3;
 }
 
-#banner:after, .estimates-main:after, #duplicate-banner:after {
+#banner:after, .estimates-main:after, #duplicate-banner:after, .page-banner:after {
     content: "";
     background-size: cover;
     background-position: center;
@@ -959,7 +940,7 @@ nav:after {
     background-image: url("design_top.svg");
     height: 125px;
     position: absolute;
-    display: inline-block;
+    display: block;
     bottom: -30px;
     right: -70px;
     left: 0;
@@ -970,22 +951,26 @@ nav:after {
     position: relative;
     display: block;
     background: #f9f9f9;
-    padding-top: 10vh;
     padding-bottom: 20vh;
 }
+#mission-head {
+    position: relative;
+    height: 300px;
+    padding: 9% 0 0 0;
+    z-index: 3;
+}
 #headline {
+    display: block;
     text-align: center;
     font-weight: 200;
     font-family: Ubuntu,sans-serif;
     letter-spacing: 1px;
-    margin-top: 2%;
 }
 #mission {
-    height: 300px;
-    display: block;
-    padding: 0 1% 0 1%;
     width: 70%;
     margin: 0 auto;
+    display: block;
+    padding: 0 1% 0 1%;
     color: #666;
     font-size: 18px;
     font-weight: 200;
@@ -1201,6 +1186,11 @@ nav:after {
     width: 30%;
     background-image: url("imgs/4.JPG");
 }
+@media (max-width: 600px) {
+    .services-content ol {
+        padding: 0 15px;
+    }
+}
 #backtotop {
     z-index: 3;
     position: absolute;
@@ -1225,29 +1215,17 @@ nav:after {
     border-color: #1c47bb;
     box-shadow: #343c3d;
 }
-/*@media (max-width: 600px) {*/
-    /*#backtotop {*/
-        /*display: none !important;*/
-    /*}*/
-/*}*/
+@media (max-width: 600px) {
+    #backtotop {
+        display: none !important;
+    }
+}
 /*end of----services page------------------------------>*/
 
 /*finance page------------------------------>||||||*/
 
 .finance-banner {
     background-image: url("banner11.jpg");
-}
-@media (max-width: 600px) {
-    .finance-content {
-        padding-top: 5px;
-        text-align: center;
-        align-content: center;
-    }
-}
-@media (min-width: 600px) {
-    .finance-content {
-        text-align: left;
-    }
 }
 .finance-content {
     display: flex;
@@ -1277,7 +1255,6 @@ nav:after {
     color: #555;
     background: white;
     overflow: hidden;
-    opacity: 0;
 }
 .finance-content-appeared-first-li {
     transform: translateX(-100%);
@@ -1303,15 +1280,9 @@ nav:after {
         transform: translateX(0);
     }
 }
-.finance-content ul li p {
-    margin-left: 25px;
-    margin-right: 25px;
-}
-.finance-content ul li:first-child {
+.finance-content ul li {
     flex-direction: row;
-}
-.finance-content ul li:last-child {
-    flex-direction: column;
+    justify-content: space-around;
 }
 .finance-content ul li div {
     width: 100px;
@@ -1322,26 +1293,18 @@ nav:after {
     background-origin: border-box;
 }
 #government_icon {
-    /*background-color: #323c3d;*/
-    /*-webkit-mask-image: url("government_icon.svg");*/
-    /*mask-image: url("government_icon.svg");*/
-    margin: 0 25px;
+    display: inline-block;
     background: url("government_icon.svg") no-repeat bottom;
     background-size: contain;
-}
-#financing_icon {
-    border: 1px solid green;
-    background-image: url("financing_icon.svg");
-    color: #323c3d;
 }
 #financiers {
     width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    background-color: white;
 }
 .financier {
+    opacity: 0;
     padding: 15px 0;
     height: 50px;
     flex-grow: 1;
@@ -1357,6 +1320,7 @@ nav:after {
 }
 .financier:first-child {
     background-image: url("partners/EECU_logo.png");
+    background-position: left;
 }
 .financier:nth-child(2) {
     background-image: url("partners/Sungage_logo.png");
@@ -1367,24 +1331,33 @@ nav:after {
 .financier:nth-child(4) {
     background-image: url("partners/PaceFunding_logo.png");
 }
-
+@media (max-width: 600px) {
+    .finance-content ul {
+        padding: 0 15px;
+    }
+    .finance-content ul li {
+        flex-direction: column;
+        justify-content: center;
+    }
+    #government_icon {
+        align-self: center;
+        width: 20px;
+        height: 20px;
+        margin-bottom: 10px;
+    }
+    .finance-content ul li {
+        padding: 0 10px;
+    }
+}
 /*end of----finance page------------------------------>*/
 
 /*renewable energy page------------------------------>||||||*!*/
 
 .page-banner {
-    /*background-attachment: fixed;*/
-    /*text-shadow: rgba(0, 0, 0, 0.4) 0 4px 5px;*/
-    /*-moz-box-shadow:0 5px 5px rgba(182, 182, 182, 0.75);*/
-    /*-webkit-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);*/
-    /*box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);*/
-    /*position: relative;*/
-    /*border-top: none;*/
-    height: 45vh;
+    top: 8vh;
+    height: 90vh;
     display: block;
     position: relative;
-    margin-top: -4%;
-    padding-top: 10%;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -1392,7 +1365,7 @@ nav:after {
     z-index: 3;
 }
 .content-main {
-
+    position: relative;
 }
 .renewable-banner {
     background-image: url("solar-hands.jpg");
@@ -1819,9 +1792,13 @@ label[for="slide-right"] {
 #mobile-gallery {
     background-color: #00020f;
     position: relative;
-    margin: 5px auto;
     padding: 50px 0;
     border-radius: 4px;
+}
+@media (max-width: 600px) {
+    #thumbnail-slider, #mobile-gallery {
+        border-radius: 0;
+    }
 }
 .mobile-pictures {
     background-size: contain;
@@ -2053,6 +2030,11 @@ label[for="slide-right"] {
     transform: translate(-50%, -10%) rotate(45deg);
     z-index: 99999;
     animation: fade_move_down 4s ease-in-out infinite;
+}
+@media (max-width: 600px){
+    #scroll-down {
+        display: none;
+    }
 }
 /*animated scroll arrow animation*/
 @keyframes fade_move_down {

@@ -27,6 +27,18 @@ $(document).ready(function($) {
             return 'click';
     })();
 
+    $("header:not(#bars)").on(clickEvent, function(e) {
+        e.stopPropagation();
+    });
+
+    var mobileMenu = $("#mobile-menu");
+
+    $(document).on(clickEvent, function() {
+        if (mobileMenu.is(":checked")) {
+            mobileMenu.attr("checked", false);
+        }
+    });
+
     $("img").on(clickEvent, function(e) {
         $("#viewer").empty();
         $(this).clone().appendTo($("#viewer").css("visibility", "visible"));
@@ -145,21 +157,16 @@ $(document).ready(function($) {
 
         for (var i = 1; i <= view_count; i++) {
             if (spot <= i * window_width) {
-                //alert("view num: " + i);
                 view_num = i;
                 break;
             }
         }
-
-        //alert(spot + ", " + view_end);
 
         if (spot > view_end) {
 
             view_start = view_end;
 
             view_end = view_num * window_width;
-
-            //alert("view num: " + view_num + ", " + "view start: " + view_start);
 
             $("#pic-links").animate({ scrollLeft: view_start}, 650);
             if (view_end >= slider_width) {
@@ -168,13 +175,9 @@ $(document).ready(function($) {
         }
         else if (spot < view_start) {
 
-            //alert(spot + " < " + view_start);
-
             view_end = view_num * window_width;
 
             view_start = view_end - window_width;
-
-            //alert(view_start + " -> " + view_end);
 
             $("#pic-links").animate({ scrollLeft: view_start}, 650);
             if (view_start === 0) {
@@ -190,7 +193,6 @@ $(document).ready(function($) {
     });
 
     $("label[for='slide-right']").on(clickEvent, function() {
-        //alert(view_end + ", " + slider_width);
         if (view_end < slider_width) {
             view_start += window_width;
             view_end += window_width;

@@ -3,7 +3,7 @@
 <header>
     <nav>
         <input type="checkbox" id="mobile-menu">
-        <label for="mobile-menu"><i class="fas fa-bars"></i></label>
+        <label for="mobile-menu" id="bars"><i class="fas fa-bars"></i></label>
         <a href="/"><img src="/assets/v2_logo.png" alt="" id="logo"></a>
         <div id="phone-call-cont">
             <a href="tel:+1-559-7797367"><span class="phone"><i class="fas fa-phone fa-rotate-90"></i></span><span>  559-779-7367</span></a>
@@ -35,7 +35,7 @@
                 {{/*<a href="/team"><span class="menu-items-icon"><i class="fas fa-users"></i></span><span>Team</span></a>*/}}
             {{/*</li>*/}}
             <li {{if eq .Page "/#mission"}}class="tab-selected"{{end}}>
-                <a href="/#mission"><span class="menu-items-icon"><i class="fas fa-bullseye"></i></span><span>Our Mission</span></a>
+                <a href="/#mission" id="hide-menu"><span class="menu-items-icon"><i class="fas fa-bullseye"></i></span><span>Our Mission</span></a>
             </li>
         </ul>
     </nav>
