@@ -9,32 +9,32 @@
             <a href="tel:+1-559-7797367"><span class="phone"><i class="fas fa-phone fa-rotate-90"></i></span><span>  559-779-7367</span></a>
         </div>
         <ul id="menu">
-            <li {{if eq .Page "/services"}}class="tab-selected"{{end}}>
-                <a href="/services"><span class="menu-items-icon"><i class="fas fa-solar-panel"></i></span><span>Services</span></a>
-                <ol class="drop-menu">
-                    <li><a href="">Solar Panel Rooftops</a></li>
-                    <li><a href="">Ground Mounted Solar Panels</a></li>
-                    <li><a href="">Battery Back Up Systems</a></li>
-                </ol>
+            <li>
+                <a href="/services" {{if eq .Page "/services"}}class="tab-selected"{{end}}><span class="menu-items-icon"><i class="fas fa-solar-panel"></i></span><span>Services</span></a>
+                {{/*<ol class="drop-menu">*/}}
+                    {{/*<li><a href="">Solar Panel Rooftops</a></li>*/}}
+                    {{/*<li><a href="">Ground Mounted Solar Panels</a></li>*/}}
+                    {{/*<li><a href="">Battery Back Up Systems</a></li>*/}}
+                {{/*</ol>*/}}
             </li>
-            <li {{if eq .Page "/incentives/financing"}}class="tab-selected"{{end}}>
-                <a href="/incentives/financing"><span class="menu-items-icon"><i class="fas fa-file-invoice-dollar"></i></span><span>Incentives & Financing</span></a></li>
-            <li {{if eq .Page "/gallery"}}class="tab-selected"{{end}}>
-                <a href="/gallery"><span class="menu-items-icon"><i class="fas fa-home"></i></span><span>Client Gallery</span></a>
-                <ol class="drop-menu">
-                    <li><a href="">Residential Rooftop Solar</a></li>
-                    <li><a href="">Business Rooftop Solar</a></li>
-                    <li><a href="">Residential Ground Mounted Solar</a></li>
-                    <li><a href="">Business Backup Battery</a></li>
-                </ol>
+            <li>
+                <a href="/incentives/financing" {{if eq .Page "/incentives/financing"}}class="tab-selected"{{end}}><span class="menu-items-icon"><i class="fas fa-file-invoice-dollar"></i></span><span>Incentives & Financing</span></a></li>
+            <li>
+                <a href="/gallery" {{if eq .Page "/gallery"}}class="tab-selected"{{end}}><span class="menu-items-icon"><i class="fas fa-home"></i></span><span>Client Gallery</span></a>
+                {{/*<ol class="drop-menu">*/}}
+                    {{/*<li><a href="">Residential Rooftop Solar</a></li>*/}}
+                    {{/*<li><a href="">Business Rooftop Solar</a></li>*/}}
+                    {{/*<li><a href="">Residential Ground Mounted Solar</a></li>*/}}
+                    {{/*<li><a href="">Business Backup Battery</a></li>*/}}
+                {{/*</ol>*/}}
             </li>
-            <li {{if eq .Page "/renewable/energy"}}class="tab-selected"{{end}}>
-                <a href="/renewable/energy"><span class="menu-items-icon"><i class="fas fa-leaf"></i></span><span>Renewable Energy</span></a>
+            <li>
+                <a href="/renewable/energy" {{if eq .Page "/renewable/energy"}}class="tab-selected"{{end}}><span class="menu-items-icon"><i class="fas fa-leaf"></i></span><span>Renewable Energy</span></a>
             </li>
             {{/*<li {{if eq .Page "/team"}}class="tab-selected"{{end}}>*/}}
                 {{/*<a href="/team"><span class="menu-items-icon"><i class="fas fa-users"></i></span><span>Team</span></a>*/}}
             {{/*</li>*/}}
-            <li {{if eq .Page "/#mission"}}class="tab-selected"{{end}}>
+            <li>
                 <a href="/#mission" id="hide-menu"><span class="menu-items-icon"><i class="fas fa-bullseye"></i></span><span>Our Mission</span></a>
             </li>
         </ul>

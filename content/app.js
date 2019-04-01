@@ -1,6 +1,17 @@
 
 $(document).ready(function($) {
 
+    // $("#menu li").find("a").each(function() {
+    //     var text = $(this).attr("href");
+    //     if (window.location.href.includes(text)) {
+    //         $(this).addClass("active")
+    //     } else {
+    //         $(this).removeClass("active")
+    //     }
+    // });
+
+
+
     $("#backtotop").hide();
     var isVisible = false;
     $(window).scroll(function(){

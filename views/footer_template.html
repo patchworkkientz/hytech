@@ -34,6 +34,9 @@
         if (hash === "#open_form") {
             document.getElementById("start").checked = true;
         }
+        if (hash === "#mission") {
+            hideMenu.classList.add("tab-selected");
+        }
         var num_circles = document.getElementById("pic-links").querySelectorAll("a");
         for (var i = 0; i < num_circles.length; i++) {
             num_circles[i].style.border = "2px solid transparent";

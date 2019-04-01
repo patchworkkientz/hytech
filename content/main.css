@@ -22,7 +22,6 @@ body {
 header {
     display: block;
     z-index: 4;
-    /*position: relative;*/
     position: fixed;
     top: 0;
     left: 0;
@@ -39,6 +38,7 @@ footer {
     box-shadow: 0 -5px 5px -5px rgba(182, 182, 182, 0.75);
     color: #323c3d;
     clear: both;
+    z-index: 4;
 }
 a[href="/estimates#open_form"]#open_form:target {
     display: none;
@@ -52,7 +52,7 @@ a[href="/estimates#open_form"]#open_form:target {
                          /*^*/
 @media (max-width: 600px) {
     #start:checked ~ .wrapper_mobile {
-        display: block;
+        /*display: block;*/
     }
     .wrapper_mobile {
         height: 30px;
@@ -67,9 +67,6 @@ a[href="/estimates#open_form"]#open_form:target {
     #graphic {
         background-image: url("v2_logo.png");
         width: 250px !important;
-    }
-    #service-form {
-        margin: 2%;
     }
     #logo > * {
         font-size: 12px;
@@ -225,7 +222,7 @@ a[href="/estimates#open_form"]#open_form:target {
         display:  block;
     }
     .wrapper {
-        display: none;
+        /*display: none;*/
     }
     .drop-menu {
         display: none;
@@ -274,7 +271,6 @@ a[href="/estimates#open_form"]#open_form:target {
     nav {
         background-color: white;
         box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        /*background-color: #1feaf7;*/
         padding: 0 1.5%;
     }
     #logo {
@@ -284,13 +280,10 @@ a[href="/estimates#open_form"]#open_form:target {
         width: auto;
         height: auto;
         margin-right: 2%;
-        /*background-color: #bbbbbb;*/
     }
     #menu {
         vertical-align: top;
         display: inline-block;
-        /*background-color: orange;*/
-        /*height: 50px;*/
         margin: 0;
         padding: 0;
         color: #666;
@@ -302,7 +295,6 @@ a[href="/estimates#open_form"]#open_form:target {
     }
     #menu li  {
         display: inline-block;
-        /*background-color: yellow;*/
         height: 100%;
         margin-right: 3%;
     }
@@ -325,7 +317,7 @@ a[href="/estimates#open_form"]#open_form:target {
         color: #464646;
         /*background-color: pink;*/
     }
-    #menu li a:hover {
+    #menu li a:hover, .tab-selected {
         border-bottom: 1px dotted #000;
     }
     @media (max-width: 860px) {
@@ -337,19 +329,6 @@ a[href="/estimates#open_form"]#open_form:target {
             text-align: center;
         }
     }
-    /*#menu li:hover:not(.tab-selected) {*/
-        /*background-color: rgba(212, 212, 212, 0.75);*/
-        /*color: #666;*/
-    /*}*/
-    /*.tab-selected {*/
-        /*background-color: rgba(0, 144, 247, 0.75);*/
-    /*}*/
-    /*.tab-selected > a {*/
-        /*color: white !important;*/
-    /*}*/
-    /*#menu li a:active {*/
-        /*background-color: rgba(255, 0, 255, 0.51);*/
-    /*}*/
     .wrapper_mobile, .drop-menu, .menu-items-icon {
         display: none;
     }
@@ -428,6 +407,7 @@ a[href="/estimates#open_form"]#open_form:target {
     box-sizing:border-box;
     display: inline-block;
     transition: all 0.2s ease;
+    margin-top: 10px;
 }
 #public-index-start:not(.close-form-x):hover {
     transform: scale(1.05);
@@ -495,28 +475,19 @@ a[href="/estimate"]:hover {
     display: block;
 }
 
-@media (max-width: 600px) {
-    #service-form-parent {
-        width: 90%;
-    }
-}
-@media (min-width: 600px) {
-    #service-form-parent {
-        width: 40%;
-    }
-}
 #service-form-parent {
-    top: 20vh;
     display: none;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    z-index: 4;
+    z-index: 5;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
 }
-
 #service-form {
     z-index: 4;
     position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, .87);
     border-radius: 20px;
     flex-direction: column;
@@ -524,6 +495,16 @@ a[href="/estimate"]:hover {
     padding: 35px 1em 15px;
     overflow: hidden;
     transition: all 1s;
+}
+@media (max-width: 600px) {
+    #service-form {
+        width: 80%;
+    }
+}
+@media (min-width: 600px) {
+    #service-form {
+        width: 50%;
+    }
 }
 #close-form {
     cursor: pointer;
@@ -643,7 +624,7 @@ input[required]:focus::-webkit-input-placeholder, #service-form textarea:focus::
 #banner-cont {
     position: relative;
     display: block;
-    min-height: 90vh;
+    height: 90vh;
     top: 8vh;
 }
 #banner, .estimates-main {
@@ -813,8 +794,6 @@ input[required]:focus::-webkit-input-placeholder, #service-form textarea:focus::
     position: relative;
     width: 200px;
     height: 200px;
-    top: 50%;
-    transform: translateY(-50%);
 }
 #open_form:after {
     content: "";
@@ -1225,7 +1204,17 @@ nav:after {
 /*finance page------------------------------>||||||*/
 
 .finance-banner {
-    background-image: url("banner11.jpg");
+    background-image: url("3d-sun.jpg");
+}
+.finance-banner h2 {
+    display: none;
+    /*color: #ff8500;*/
+    /*text-shadow: 0 0 10px #FFFFFF;*/
+    background-color: white;
+    border-radius: 20px;
+    color: rgb(0, 153, 204);
+    padding: 2%;
+    border: 1px solid #c5c5c5;
 }
 .finance-content {
     display: flex;
@@ -1352,7 +1341,6 @@ nav:after {
 /*end of----finance page------------------------------>*/
 
 /*renewable energy page------------------------------>||||||*!*/
-
 .page-banner {
     top: 8vh;
     height: 90vh;
@@ -1364,8 +1352,23 @@ nav:after {
     color: white;
     z-index: 3;
 }
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    z-index: 4;
+}
+@media (max-width: 600px) {
+    .banner-content {
+        width: 90%;
+    }
+}
 .content-main {
     position: relative;
+    z-index: 3;
+    padding-top: 70px;
 }
 .renewable-banner {
     background-image: url("solar-hands.jpg");
@@ -1401,6 +1404,7 @@ nav:after {
     position: relative;
     box-shadow: 0 0 8px 1px rgba(64,67,69,.17);
     opacity: 0;
+    margin-bottom: 10px;
 }
 #topics .card * {
     position: absolute;
@@ -1533,15 +1537,15 @@ nav:after {
 
 .one {
     /*transform: scale(1.4);*/
-    background-image: url("profiles/Lucus%20Hoehn.jpg");
-    background-position: center center;
+    background-image: url("profiles/LucusHoehn.jpg");
+    background-position: top;
     background-origin: border-box;
     background-size: cover;
 }
 
 .two {
     /*transform: scale(2.4);*/
-    background-image: url("profiles/Rebecca%20Marsh.jpg");
+    background-image: url("profiles/RebeccaMarsh.jpg");
     background-position: center center;
     background-origin: border-box;
     background-size: cover;
@@ -1604,16 +1608,14 @@ nav:after {
 
 .mission-banner {
     width: 100%;
+    height: 40vh;
     padding: 0 0 5% 0;
     display: flex;
     flex-flow: column;
     color: white;
+    justify-content: center;
     /*border: 2px solid red;*/
     background-image: linear-gradient(#1feaf7, #40c0eb);
-}
-
-.mission-banner h2 {
-    /*margin-top: 3%;*/
 }
 
 #greet {
@@ -1941,12 +1943,12 @@ label[for="slide-right"] {
     transition: all 1s;
 }
 
-#tos, #privacy, #licenses {
+#tos, #privacy, #licenses, #sitemap {
     position: relative;
     display: block;
     width: 70%;
-    margin: 0 auto;
-    padding-top: 10vh;
+    margin: 2em auto 2em auto;
+    padding: 15vh 0;
     color: #666;
     font-size: 16px;
     font-weight: 200;
@@ -1957,19 +1959,6 @@ label[for="slide-right"] {
     display: block;
 }
 
-#sitemap {
-    position: absolute;
-    top: 133px;
-    display: block;
-    padding: 0 2em 0 200px;
-    margin: 2em 0;
-}
-@media (max-width: 600px) {
-    #sitemap {
-        padding: 0;
-        margin: 1em 2em;
-    }
-}
 #main-gallery {
     padding: 15vh 0 0 0;
     position: relative;
@@ -2050,6 +2039,11 @@ label[for="slide-right"] {
 }
 #incentives-headline:target ~ #scroll-down {
     display: none;
+}
+@media (max-width: 600px) {
+    #banner-cont, .page-banner {
+        height: 80vh;
+    }
 }
 
 
