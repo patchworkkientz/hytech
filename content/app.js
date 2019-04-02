@@ -1,17 +1,6 @@
 
 $(document).ready(function($) {
 
-    // $("#menu li").find("a").each(function() {
-    //     var text = $(this).attr("href");
-    //     if (window.location.href.includes(text)) {
-    //         $(this).addClass("active")
-    //     } else {
-    //         $(this).removeClass("active")
-    //     }
-    // });
-
-
-
     $("#backtotop").hide();
     var isVisible = false;
     $(window).scroll(function(){
@@ -284,6 +273,7 @@ $(document).ready(function($) {
         var el_3 = $(".services-content ol li");
             el_3.each(function () {
                 if ($(this).visible(true)) {
+                //if ($(this).is(":visible")) { //changed to this from line above because of Safari issue
                     $(this).addClass("services-appeared");
                 }
             });

@@ -62,8 +62,8 @@ func main() {
 	http.HandleFunc("/licenses", ServeOurLicensesPage)
 	http.HandleFunc("/sitemap", ServeOurSitemapPage)
 
-	//go http.ListenAndServe(":80", http.HandlerFunc(redirect))
-	log.Println(http.ListenAndServe(":80", nil))
+	go http.ListenAndServe(":80", http.HandlerFunc(redirect))
+	//log.Println(http.ListenAndServe(":80", nil))
 
 	log.Println(http.ListenAndServeTLS(":443",
 	"/etc/letsencrypt/live/myhytechenergy.com/fullchain.pem",
@@ -323,7 +323,7 @@ func Mailer(p Potential_Client) {
 
 	err := smtp.SendMail("smtp.gmail.com:587",
 		smtp.PlainAuth("", from, pass, "smtp.gmail.com"),
-		from, []string{"patchkientz@gmail.com"}, []byte(msg))
+		from, []string{"lhoehn@hytechnrg.com"}, []byte(msg))
 
 //lhoehn@hytechnrg.com
 

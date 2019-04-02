@@ -7,10 +7,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     height: 100%;
     display: block;
-}
-body {
     background-color: #f8fafc;
-    /*background-image: linear-gradient(#e0f4fb, #dddddd)*/
 }
 #ecto {
     min-height: 100vh;
@@ -531,7 +528,6 @@ a[href="/estimate"]:hover {
 .input-label {
     position: relative;
 }
-
 .input-label label {
     display: none;
     position: absolute;
@@ -565,6 +561,10 @@ input[required]:focus ~ label {
 input[required]:focus::-webkit-input-placeholder, #service-form textarea:focus::-webkit-input-placeholder {
     opacity: 0;
 }
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* Firefox 18- */
+input:focus::-moz-placeholder { color:transparent; } /* Firefox 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* oldIE ;) */
 .form-inputs {
     margin-top: 25px !important;
 }
@@ -755,9 +755,7 @@ input[required]:focus::-webkit-input-placeholder, #service-form textarea:focus::
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-#co-logo:after {
-    animation: .5s linear 8s 20 blinking-bulb;
+    /*animation: .5s linear 8s 20 blinking-bulb;*/
 }
 #co-logo:before {
     content: "";
@@ -781,12 +779,12 @@ input[required]:focus::-webkit-input-placeholder, #service-form textarea:focus::
 }
 @keyframes blinking-bulb {
     50% {
-        background-image: url("free_estimate_front_on.svg");
+        /*background-image: url("free_estimate_front_on.svg");*/
     }
 }
 @keyframes blinking-glow {
     50% {
-        background: radial-gradient(circle, rgba(255, 231, 0, 0.9) 1%, rgba(255, 231, 0, 0.9) 9%, rgba(241, 255, 255, 0.15) 90%);
+        background: radial-gradient(circle, rgba(255, 231, 0, 0.9) 5%, rgba(255, 231, 0, 0.9) 5%, rgba(241, 255, 255, 0.15) 90%);
     }
 }
 #open_form {
@@ -1055,7 +1053,6 @@ nav:after {
 @media (max-width: 600px) {
     .services-content {
         text-align: center;
-        align-content: center;
     }
 }
 @media (min-width: 600px) {
@@ -1071,9 +1068,6 @@ nav:after {
     background-image: url("RenewableRewards_banner-1.jpg");
 }
 .services-content {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
     color: #666;
     font-size: 18px;
     font-weight: 200;
@@ -1084,9 +1078,6 @@ nav:after {
 .services-content ol {
     list-style: none;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    /*border: 1px solid orangered;*/
 }
 #service-top:target {
     display: block;
@@ -1095,6 +1086,10 @@ nav:after {
     visibility: hidden;
 }
 .services-content ol li {
+    display: block;
+    opacity: 0;
+}
+.li-flex {
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
@@ -1103,8 +1098,6 @@ nav:after {
     padding: 15px;
     color: #555;
     background: white;
-    transition: all .4s;
-    opacity: 0;
 }
 .services-appeared {
     opacity: 0;
@@ -1117,28 +1110,18 @@ nav:after {
         transform: translateY(0) scale(1);
     }
 }
-.services-content ol li:hover {
-    /*cursor: pointer;*/
-    /*background-color: rgba(224, 224, 224, 0.75);*/
-}
 .service-picture {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     background-origin: border-box;
-    /*border: 1px solid red;*/
 }
 .service-point {
-    /*background: gray;*/
-     width: 40%;
+    width: 40%;
     padding: 5px;
- }
-.services-content ol li:nth-child(2) .service-point {
-    /*background: cyan;*/
 }
-.services-content ol li:last-child .service-point{
+.li-flex:last-child .service-point{
     width: 70%;
-    /*background: red;*/
 }
 #solar-panel-rooftop-1 {
     height: 300px;
@@ -2003,6 +1986,12 @@ label[for="slide-right"] {
     to {
         opacity: 1;
     }
+}
+#read-spot {
+    display: block;
+    position: relative;
+    top: -40px;
+    visibility: hidden;
 }
 #scroll-down {
     position: fixed;

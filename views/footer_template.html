@@ -10,10 +10,13 @@
     <p id="copyright">© Copyright 2019 HyTech Energy, Inc. All rights reserved.</p>
 </footer>
 <script src="/assets/jquery.min.js"></script>
-{{/*<script src="/assets/app.js"></script>*/}}
+
+<script src="/assets/app.js"></script>
+
 <!-- Development version: -->
-<script>document.write('<script src="/assets/app.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>
-    {{if or (eq .Page "/") (eq .Page "/estimates")}}
+{{/*<script>document.write('<script src="/assets/app.js?dev=' + Math.floor(Math.random() * 100) + '"\><\/script>');</script>*/}}
+
+{{if or (eq .Page "/") (eq .Page "/estimates")}}
         <script>
             document.getElementById("start").addEventListener("change", function() {
                 if(this.checked ) {
@@ -23,7 +26,6 @@
         </script>
 {{end}}
 <script>
-    //document.getElementById("backtotop").style.display = "none";
     function f() {
         var hash = window.location.hash;
         var hideMenu = document.getElementById("hide-menu");
