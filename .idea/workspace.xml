@@ -3,14 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4331ada0-2ea8-418b-b1ad-3fd57efc6894" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/content/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/content/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/footer_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/footer_template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/head_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/head_template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/incentives-financing.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/incentives-financing.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/renewable-energy.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/renewable-energy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/banner11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/cloud-solar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/design_bottom.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/heart-sun.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/services.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/sun-girl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/sun-reflect.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/save.html" beforeDir="false" />
     </list>
     <ignored path="hytech.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,8 +45,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="59" column="44" lean-forward="true" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+            <state relative-caret-position="201">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
               <folding>
                 <element signature="e#14#175#0" expanded="true" />
               </folding>
@@ -170,9 +170,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="81" />
-    <option name="y" value="29" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="79" />
+    <option name="y" value="45" />
     <option name="width" value="1288" />
     <option name="height" value="722" />
   </component>
@@ -304,8 +304,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="81" y="29" width="1288" height="722" extended-state="0" />
-    <editor active="true" />
+    <frame x="79" y="45" width="1288" height="722" extended-state="1" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5010142" side_tool="true" weight="0.19642857" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.4989858" visible="true" weight="0.26163724" />
@@ -626,8 +625,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="59" column="44" lean-forward="true" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+        <state relative-caret-position="201">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
           <folding>
             <element signature="e#14#175#0" expanded="true" />
           </folding>
