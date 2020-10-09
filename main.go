@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"net/smtp"
 	"os"
 	"path"
 	"path/filepath"
@@ -15,6 +14,9 @@ import (
 
 	_ "image/jpeg"
 	_ "image/png"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/mail"
+	Log "google.golang.org/appengine/log"
 )
 
 type Potential_Client struct {
@@ -39,11 +41,9 @@ var funcMap = template.FuncMap{
 	"minus": minus,
 }
 
-func init() {
-	templates = template.Must(template.New("").Funcs(funcMap).ParseGlob("views/*.html"))
-}
-
 func main() {
+	templates = template.Must(template.New("").Funcs(funcMap).ParseGlob("views/*.html"))
+
 	//resurce end points
 	http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer(http.Dir("./content"))))
 	http.HandleFunc("/favicon.ico", ServeFileHandler)
@@ -61,14 +61,16 @@ func main() {
 	http.HandleFunc("/privacy", ServeOurPrivacyPage)
 	http.HandleFunc("/licenses", ServeOurLicensesPage)
 	http.HandleFunc("/sitemap", ServeOurSitemapPage)
+	log.Print("Listening on port 8080")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 
-	go http.ListenAndServe(":80", http.HandlerFunc(redirect))
-	//log.Println(http.ListenAndServe(":80", nil))
-
-	log.Println(http.ListenAndServeTLS(":443",
-	"/etc/letsencrypt/live/myhytechenergy.com/fullchain.pem",
-	"/etc/letsencrypt/live/myhytechenergy.com/privkey.pem",
-	nil))
+	//go http.ListenAndServe(":80", http.HandlerFunc(redirect))
+	////log.Println(http.ListenAndServe(":80", nil))
+	//
+	//log.Println(http.ListenAndServeTLS(":443",
+	//"/etc/letsencrypt/live/myhytechenergy.com/fullchain.pem",
+	//"/etc/letsencrypt/live/myhytechenergy.com/privkey.pem",
+	//nil))
 }
 
 func noescape(str string) template.HTML {
@@ -119,19 +121,19 @@ func ServePublicIndexPage(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "POST" {
 		if r.FormValue("submit") == "Yes, Send!" {
-			Mailer(pclient)
+			//Mailer(pclient, r)
 			msg_flag = "finnish"
 			progress = "100"
 		} else if r.FormValue("submit") == "No Thanks" {
-			Mailer(pclient)
+			//Mailer(pclient, r)
 			msg_flag = "nothanks"
 			progress = "100"
 		} else if r.FormValue("submit") == "Send My Interests" {
-			//pclient = Mailer(w, r)
+
 			msg_flag = "message"
 			progress = "70"
 		} else {
-			//pclient = Mailer(w, r)
+
 			msg_flag = "interest"
 			progress = "50"
 		}
@@ -305,38 +307,41 @@ func FileList(folder string) (list []Image_File, err error) {
 	return list, err
 }
 
-func Mailer(p Potential_Client) {
+func Mailer(p Potential_Client, r *http.Request) {
 
-	conf_msg := []byte("Subject: From HyTech Energy" + "\r\n" +
+	//this mail api has been deprecated
+
+	ctx := appengine.NewContext(r)
+
+	bodyConf := "Subject: From HyTech Energy" + "\r\n" +
 				"\rThank you " + p.Name + " for reaching out to HyTech Energy!\r\n" +
-				"\rWe will be contacting you soon about an incredible estimate on your renewable energy future.\r\n")
+				"\rWe will be contacting you soon about an incredible estimate on your renewable energy future.\r\n"
 
-	msg := []byte("Subject: From " + p.Name + "\r\n" +
+	conf_msg := &mail.Message{
+		Sender:  "patchkientz@gmail.com",
+		To:      []string{p.Email},
+		Subject: "Thank you",
+		Body:    bodyConf,
+	}
+	if err := mail.Send(ctx, conf_msg); err != nil {
+		Log.Errorf(ctx, "Alas, my user, the email failed to sendeth: %v", err)
+	}
+
+	body := "Subject: From " + p.Name + "\r\n" +
 		"\rClient: " + p.Name + " <" + p.Email + ">\r\n" +
 		"\rEmail: "+ p.Email +"\r\n" +
 		"\rPhone: "+ p.Tel +"\r\n" +
 		"\rInterests: " + strings.Join(p.Interest, ", ") + "\r\n" +
-		"\r\n" + p.Message + "\r\n")
+		"\r\n" + p.Message + "\r\n"
 
-		from := "patchcoding@gmail.com"
-		pass := "Field4d in con!"
-
-	err := smtp.SendMail("smtp.gmail.com:587",
-		smtp.PlainAuth("", from, pass, "smtp.gmail.com"),
-		from, []string{"lhoehn@hytechnrg.com"}, []byte(msg))
-
-//lhoehn@hytechnrg.com
-
-	if err != nil {
-		log.Printf("smtp error: %s", err)
+	msg := &mail.Message{
+		Sender:  "patchkientz@gmail.com",
+		To:      []string{"patchkientz@gmail.com"},
+		Subject: "New Client Inquiry",
+		Body:    body,
 	}
-
-	err = smtp.SendMail("smtp.gmail.com:587",
-		smtp.PlainAuth("", from, pass, "smtp.gmail.com"),
-		from, []string{p.Email}, []byte(conf_msg))
-
-	if err != nil {
-		log.Printf("smtp error: %s", err)
+	if err := mail.Send(ctx, msg); err != nil {
+		Log.Errorf(ctx, "Alas, my user, the email failed to sendeth: %v", err)
 	}
 }
 
